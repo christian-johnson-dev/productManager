@@ -6,6 +6,18 @@ module.exports.index = (request, response) => {
   });
 };
 
+module.exports.getAllProducts = (request, response) => {
+  Product.find({}) //TODO check to see if {}is necessary
+    .then((products) => {
+      console.log(products);
+      response.json(products);
+    })
+    .catch((err) => {
+      console.log(err);
+      response.json(err);
+    });
+};
+
 module.exports.createProduct = (request, response) => {
   Product.create(request.body)
     .then((product) => response.json(product))
