@@ -9,13 +9,19 @@ module.exports.index = (request, response) => {
 module.exports.getAllProducts = (request, response) => {
   Product.find({}) //TODO check to see if {}is necessary
     .then((products) => {
-      console.log(products);
+      // console.log(products);
       response.json(products);
     })
     .catch((err) => {
       console.log(err);
       response.json(err);
     });
+};
+
+module.exports.getProduct = (request, response) => {
+  Product.findOne({ _id: request.params.id })
+    .then((product) => response.json(product))
+    .catch((err) => response.json(err));
 };
 
 module.exports.createProduct = (request, response) => {

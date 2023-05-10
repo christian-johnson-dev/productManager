@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
-const ProductForm = () => {
+const ProductForm = (props) => {
+  const { products, setProduct } = props;
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
@@ -26,6 +27,7 @@ const ProductForm = () => {
       .then((res) => {
         console.log(res);
         console.log(res.data);
+        setProduct([...products, res.data]);
         setTitle("");
         setPrice("");
         setDescription("");
