@@ -4,6 +4,18 @@ import { Link } from "react-router-dom";
 
 const ProductList = (props) => {
   const { products, setProduct } = props;
+  const removeFromDom = (productId) => {
+    setProduct(products.filter((product) => product._id !== productId));
+  };
+  const deleteProduct = (productId) => {
+    axios
+      .delete("http://localhost:8000/api/product/" + productId)
+      .then((res) => {
+        removeFromDom(productId);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
     axios
       .get("http://localhost:8000/api/products")
@@ -13,16 +25,25 @@ const ProductList = (props) => {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(products.length);
+
   return (
     <div>
       <h3>All Products:</h3>
       {products.map((product) => {
         return (
           <div key={product._id}>
-            <Link to={`/product/${product._id}`}>
+            <p>
               {product.title} ${product.price}:{product.description}
-            </Link>
+            </p>
+            <Link to={`/product/${product._id}`}>View</Link>
+            <Link to={`/product/edit/${product._id}`}>Edit</Link>
+            <button
+              onClick={(event) => {
+                deleteProduct(product._id);
+              }}
+            >
+              Delete
+            </button>
           </div>
         );
       })}

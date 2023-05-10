@@ -6,6 +6,14 @@ module.exports.index = (request, response) => {
   });
 };
 
+//*==================== CRUD ====================*//
+//*------------------- Create -------------------*//
+module.exports.createProduct = (request, response) => {
+  Product.create(request.body)
+    .then((product) => response.json(product))
+    .catch((err) => response.json(err));
+};
+//*------------------- Read -------------------*//
 module.exports.getAllProducts = (request, response) => {
   Product.find({}) //TODO check to see if {}is necessary
     .then((products) => {
@@ -23,9 +31,18 @@ module.exports.getProduct = (request, response) => {
     .then((product) => response.json(product))
     .catch((err) => response.json(err));
 };
+//*------------------- Update -------------------*//
+module.exports.updateProduct = (request, response) => {
+  Product.findOneAndUpdate({ _id: request.params.id }, request.body, {
+    new: true,
+  })
+    .then((updatedProduct) => response.json(updatedProduct))
+    .catch((err) => response.json(err));
+};
 
-module.exports.createProduct = (request, response) => {
-  Product.create(request.body)
-    .then((product) => response.json(product))
+//*------------------- Delete -------------------*//
+module.exports.deleteProduct = (request, response) => {
+  Product.deleteOne({ _id: request.params.id })
+    .then((deleteConfirmation) => response.json(deleteConfirmation))
     .catch((err) => response.json(err));
 };
