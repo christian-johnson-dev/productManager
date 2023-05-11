@@ -6,7 +6,6 @@ const Main = (props) => {
 
   return (
     <div>
-      <h3>Product Manager</h3>
       <ProductForm products={products} setProduct={setProducts} />
       <hr />
       <ProductList products={products} setProduct={setProducts} />

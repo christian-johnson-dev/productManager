@@ -1,0 +1,20 @@
+.form-label {
+  color: #D7263D;
+  font-weight: bold;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border-radius: 5px;
+  border: 1px solid #009FB7;
+}
+
+.form-button {
+  border: none;
+  background-color: #009FB7;
+  color: #fff;
+  padding: 0.5em 1em;
+  cursor: pointer;
+}

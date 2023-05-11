@@ -1,0 +1,13 @@
+.detailWrapper{
+}
+h3 {
+  color: #D7263D;
+  font-weight: bold;
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background-color: #009FB7;
+  margin: 1em 0;
+}

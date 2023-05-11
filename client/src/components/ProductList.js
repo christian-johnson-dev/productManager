@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import styles from "./ProductList.module.css";
 
 const ProductList = (props) => {
   const { products, setProduct } = props;
@@ -49,6 +50,7 @@ const ProductList = (props) => {
                   <Link to={`/product/${product._id}`}>View</Link> |{" "}
                   <Link to={`/product/edit/${product._id}`}>Edit</Link> |{" "}
                   <button
+                    className={styles["delete-button"]}
                     onClick={(event) => {
                       deleteProduct(product._id);
                     }}

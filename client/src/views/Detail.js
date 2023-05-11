@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import styles from "./Detail.module.css";
 const Detail = (props) => {
   const [product, setProduct] = useState({});
   const { id } = useParams();
@@ -15,7 +16,7 @@ const Detail = (props) => {
       .catch((err) => console.log(err));
   }, []);
   return (
-    <div>
+    <div className={styles.detailWrapper}>
       <h3>Product Details:</h3>
       <hr />
       <p>Title: {product.title}</p>

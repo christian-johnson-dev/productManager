@@ -1,0 +1,84 @@
+h3 {
+  color: #D7263D;
+  font-weight: bold;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid #009FB7;
+}
+
+
+
+thead {
+  background-color: #009FB7;
+  color: #fff;
+}
+
+tbody {
+  /* background-color: #ffffff; */
+  color: #009FB7;
+}
+
+
+tbody tr {
+  background-color: rgba(255, 255, 255, 0.75);
+  transition: background-color 0.3s;
+}
+
+tbody tr:hover {
+  background-color: rgba(255, 255, 255, 1); 
+}
+
+th, td {
+    border: 1px solid #009FB7;
+    padding: 0.5em;
+    text-align: center;
+  }
+
+th,
+td:nth-child(2),
+td:nth-child(4) {
+  text-align: center;
+}
+
+td:nth-child(1),
+td:nth-child(3) {
+  text-align: left;
+}
+
+a {
+  color: #009FB7;
+  text-decoration: none;
+}
+
+.delete-button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: red;
+  position: relative;
+  cursor: pointer;
+}
+
+.delete-button:before, .delete-button:after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 3px;
+  background-color: white;
+  transform-origin: center center;
+}
+
+.delete-button:before {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.delete-button:after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}

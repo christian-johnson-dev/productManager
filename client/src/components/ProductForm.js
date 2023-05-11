@@ -1,5 +1,6 @@
 import { useState } from "react";
 import axios from "axios";
+import styles from "./ProductForm.module.css";
 const ProductForm = (props) => {
   const { products, setProduct } = props;
   const [title, setTitle] = useState("");
@@ -17,7 +18,6 @@ const ProductForm = (props) => {
   };
   const handleSubmit = (event) => {
     event.preventDefault();
-    //don't forget your synthetic submit function
     axios
       .post("http://localhost:8000/api/product", {
         title,
@@ -38,25 +38,44 @@ const ProductForm = (props) => {
   return (
     <form onSubmit={handleSubmit}>
       <p>
-        <label htmlFor="">Title</label>
+        <label className={styles["form-label"]} htmlFor="">
+          Title
+        </label>
         <br />
-        <input type="text" value={title} onChange={handleTitleChange} />
+        <input
+          type="text"
+          className={styles["form-input"]}
+          value={title}
+          onChange={handleTitleChange}
+        />
       </p>
       <p>
-        <label htmlFor="">Price</label>
+        <label className={styles["form-label"]} htmlFor="">
+          Price
+        </label>
         <br />
-        <input type="number" value={price} onChange={handlePriceChange} />
+        <input
+          type="number"
+          className={styles["form-input"]}
+          value={price}
+          onChange={handlePriceChange}
+        />
       </p>
       <p>
-        <label htmlFor="">Description</label>
+        <label className={styles["form-label"]} htmlFor="">
+          Description
+        </label>
         <br />
         <input
           type="textarea"
+          className={styles["form-input"]}
           value={description}
           onChange={handleDescChange}
         />
       </p>
-      <button type="submit">Create</button>
+      <button type="submit" className={styles["form-button"]}>
+        Create
+      </button>
     </form>
   );
 };
