@@ -29,24 +29,38 @@ const ProductList = (props) => {
   return (
     <div>
       <h3>All Products:</h3>
-      {products.map((product) => {
-        return (
-          <div key={product._id}>
-            <p>
-              {product.title} ${product.price}:{product.description}
-            </p>
-            <Link to={`/product/${product._id}`}>View</Link>
-            <Link to={`/product/edit/${product._id}`}>Edit</Link>
-            <button
-              onClick={(event) => {
-                deleteProduct(product._id);
-              }}
-            >
-              Delete
-            </button>
-          </div>
-        );
-      })}
+      <table>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {products.map((product) => {
+            return (
+              <tr key={product._id}>
+                <td>{product.title}</td>
+                <td>${product.price}</td>
+                <td>{product.description}</td>
+                <td>
+                  <Link to={`/product/${product._id}`}>View</Link> |{" "}
+                  <Link to={`/product/edit/${product._id}`}>Edit</Link> |{" "}
+                  <button
+                    onClick={(event) => {
+                      deleteProduct(product._id);
+                    }}
+                  >
+                    +
+                  </button>
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
     </div>
   );
 };
